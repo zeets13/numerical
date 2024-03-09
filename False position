@@ -1,30 +1,29 @@
+
 import math
-def false_position(f, a, b, Tol, No):
-    if (f(a) * f(b)) >= 0:
-        print('False Position method failed.')
+def false(f,a,b,tol,no):
+    if f(a)*f(b)>=0:
+        print('The method failed.')
         return None
 
-    print('  n', '      a', '         b', '         p', '        f(p)')
-    for i in range(No):
-
-        p = (a * f(b) - b * f(a)) / (f(b) - f(a))
-        FP = f(p)
+    i=1
+    print('  n','     a','         b','          p','         f(p)')
+    while i<=no:
+        p= ((a*f(b))-(b*f(a)))/(f(b)-f(a))
+        FP=f(p)
         print(format(i, '3d'), ' ', format(a, 'f'), ' ', format(b, 'f'), ' ', format(p, 'f'), ' ',
               format(f(p), '.2e'))
-        if FP == 0 or (b - a) / 2 < Tol:
-            return print("The solution is ",p)
+        if FP==0 or abs(b-a)/2<tol:
+            return print('The solution is ',p)
+        i=i+1
+        FA=f(a)
+        FB=f(b)
 
-        FA = f(a)
-        FB = f(b)
-        if (FA > 0 and FP > 0) or (FA < 0 and FP< 0):
-            a = p
+        if(FA>0 and FP>0) or(FA<0 and FP<0):
+            a=p
         else:
-            b = p
-
-
-    print("Program failed after ",No," iterations")
-    return None
+            b=p
+    print("Program failed after ", no, " iterations")
 
 f= lambda x: x*math.log(x,10)-1.2
 
-false_position(f,2,3,0.0001,40)
+false(f,2,3,0.0001,40)
