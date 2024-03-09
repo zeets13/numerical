@@ -1,0 +1,25 @@
+def bisection(f,a,b,tol,no):
+    if f(a)*f(b)>=0:
+        print("Bisection method failed.")
+        return None
+
+    i=1
+    FA=f(a)
+    print('  n','     a','       b','          p','       f(p)')
+    while i<=no:
+        p=(a+b)/2
+        FP=f(p)
+        print(format(i,'3d'),' ',format(a, '.5f'), ' ',format(b, '.5f'), ' ',format(p, '.5f'), ' ',format(f(p), '.2e'))
+
+        if FP==0 or abs(b-a)/2<tol:
+           return print("The solution is ",p)
+        i=i+1
+        if FA*FP>0:
+            a=p
+            FA=FP
+        else:
+            b=p
+
+    print("The method returns after ",no," iterations.")
+f=lambda x: x**3-2*x-5
+bisection(f,2,3,0.0001,30)
