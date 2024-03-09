@@ -1,0 +1,23 @@
+from math import sin, pi
+
+
+def f(x):
+    return sin(x)
+def trap(x0,xn,n):
+    h=float(xn-x0)/n
+    integ=f(x0)+f(xn)
+    for i in range(1 ,n):
+        xi=x0+i*h
+        integ=integ+2*f(xi)
+
+    integ=integ*(h/2)
+    return integ
+
+
+
+result=trap(0,pi,5)
+print("Result of integration by trapezoidal rule %0.6f"%(result))
+
+
+
+
