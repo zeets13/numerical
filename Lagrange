@@ -1,0 +1,13 @@
+n=4
+x=[1,2,4,7]
+y=[3,9,15,20]
+value=5
+p=0
+for i in range(n):
+    L=1
+    for k in range(n):
+        if i!=k:
+            L=L*(value-x[k])/(x[i]-x[k])
+    p=p+L*y[i]
+
+print('\n Value at ',value,'= ',round(p,6))
