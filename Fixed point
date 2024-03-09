@@ -1,0 +1,12 @@
+def fixedpoint(g,p0,tol,no):
+    i=1
+    while i<=no:
+        print(i,' ',p0)
+        p=g(p0)
+        if abs(p-p0)<tol:
+            return print("The solution is ",p)
+        i=i+1
+        p0=p
+    return print("the method failed after ",no," iterations.")
+g= lambda x: x-(x**3+4*x**2-10)/(3*x**2+8*x)
+fixedpoint(g,1.5,0.0001,30)
